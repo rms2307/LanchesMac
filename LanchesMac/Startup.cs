@@ -25,12 +25,12 @@ namespace LanchesMac
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("Dev");
+            var connectionString = Configuration.GetConnectionString("AppContext");
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 25));
 
             services.AddDbContext<AppDBContext>(dbContextOptions =>
                 dbContextOptions.UseMySql(connectionString, serverVersion, builder =>
-                   builder.MigrationsAssembly("Dev")));
+                   builder.MigrationsAssembly("LanchesMac")));
 
             services.AddControllersWithViews();
         }
