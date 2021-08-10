@@ -1,4 +1,5 @@
 using LanchesMac.Context;
+using LanchesMac.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +32,9 @@ namespace LanchesMac
             services.AddDbContext<AppDBContext>(dbContextOptions =>
                 dbContextOptions.UseMySql(connectionString, serverVersion, builder =>
                    builder.MigrationsAssembly("LanchesMac")));
+
+            services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+            services.AddTransient<ILancheRepository, LancheRepository>();
 
             services.AddControllersWithViews();
         }
