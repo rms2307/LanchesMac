@@ -16,14 +16,18 @@ namespace LanchesMac.Repositories
             _context = context;
         }
 
-        public IEnumerable<Lanche> Lanches =>
-            _context.Lanches.Include(c => c.Categoria)
+        public IEnumerable<Lanche> ListarLanches()
+        {
+            return _context.Lanches.Include(c => c.Categoria)
                     .ToList();
+        }
 
-        public IEnumerable<Lanche> LanchesPreferidos =>
-            _context.Lanches.Include(c => c.Categoria)
+        public IEnumerable<Lanche> ListarLanchesPreferidos()
+        {
+            return _context.Lanches.Include(c => c.Categoria)
                     .Where(l => l.IsLanchePreferido == true)
                     .ToList();
+        }
 
         public Lanche GetLancheById(int lancheId)
         {

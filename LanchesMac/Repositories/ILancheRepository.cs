@@ -8,8 +8,8 @@ namespace LanchesMac.Repositories
 {
     public interface ILancheRepository
     {
-        IEnumerable<Lanche> Lanches { get; }
-        IEnumerable<Lanche> LanchesPreferidos { get; }
+        IEnumerable<Lanche> ListarLanches();
+        IEnumerable<Lanche> ListarLanchesPreferidos();
         Lanche GetLancheById(int lancheId);
     }
 }
