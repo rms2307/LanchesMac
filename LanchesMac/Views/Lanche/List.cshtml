@@ -5,17 +5,7 @@
 <div class="row">
     @foreach (var lanche in Model.Lanches)
     {
-        <div class="col-sm-4 col-lg-4 col-md-4">
-            <div class="img-thumbnail d-flex justify-content-center">
-                <img src="~/images/cheesesalada1.jpg" alt="" />
-            </div>
-            <div class="figure-caption">
-                <h3 class="float-right">@lanche.Preco.ToString("c")</h3>
-                <h3>
-                    @lanche.Nome
-                </h3>
-                <p>@lanche.DescricaoCurta</p>
-            </div>
-        </div>
+        @*@await Html.PartialAsync("_LanchesResumo", lanche);*@
+        <partial name="_LanchesResumo" for="@lanche" />
     }
 </div>
