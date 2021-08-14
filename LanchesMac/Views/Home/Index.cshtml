@@ -1,8 +1,15 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model LanchesMac.ViewModels.HomeViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@await Html.PartialAsync("_Carousel")
+
+<div class="my-3">
+    <h2>Os Preferidos da Semana</h2>
+    <h4>Tá com fome???</h4>
+</div>
+
+<div>
+    @foreach (var lanche in Model.LanchesPreferidos)
+    {
+        @await Html.PartialAsync("_LanchesResumo", lanche)
+    }
 </div>
