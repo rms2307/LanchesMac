@@ -1,10 +1,8 @@
 ﻿using LanchesMac.Context;
 using LanchesMac.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace LanchesMac.Repositories
 {
@@ -19,6 +17,15 @@ namespace LanchesMac.Repositories
         public IEnumerable<Lanche> ListarLanches()
         {
             return _context.Lanches.Include(c => c.Categoria)
+                    .OrderBy(l => l.LancheId)
+                    .ToList();
+        }
+
+        public IEnumerable<Lanche> ListarLanches(string categoria)
+        {
+            return _context.Lanches.Include(c => c.Categoria)
+                    .Where(l => l.Categoria.CategoriaNome.Equals(categoria))
+                    .OrderBy(l => l.Nome)
                     .ToList();
         }
 
