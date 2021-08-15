@@ -1,0 +1,13 @@
+﻿@model LanchesMac.ViewModels.CarrinhoCompraViewModel
+
+@if (Model.CarrinhoCompra.CarrinhoCompraItens.Count > 0)
+{
+    <li>
+        <a class="text-decoration-none" asp-controller="CarrinhoCompra">
+            <img src="~/images/Full-Cart-icon.png" />
+            <span class="text-dark" id="cart-status">
+                @Model.CarrinhoCompra.CarrinhoCompraItens.Count
+            </span>
+        </a>
+    </li>
+}
