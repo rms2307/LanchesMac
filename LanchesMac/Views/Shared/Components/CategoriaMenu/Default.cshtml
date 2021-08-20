@@ -1,0 +1,23 @@
+﻿<li class="dropdown nav-link">
+    <a asp-controller="Lanche" asp-action="List"
+       class="dropdown-toggle text-decoration-none text-dark" data-toggle="dropdown">
+        Lanches
+    </a>
+    <ul class="dropdown-menu">
+        @foreach (var cat in Model)
+        {
+            <li class="dropdown-item-text">
+                <a asp-controller="Lanche" asp-action="List"
+                   asp-route-categoria="@cat.CategoriaNome">
+                    @cat.CategoriaNome
+                </a>
+            </li>
+        }
+        <li class="dropdown-divider"></li>
+        <li class="dropdown-item-text">
+            <a asp-controller="Lanche" asp-action="List" asp-route-categoria="">
+                Ver todos os Lanches
+            </a>
+        </li>
+    </ul>
+</li>
