@@ -20,7 +20,7 @@ namespace LanchesMac.Components
         {
             var categorias = _categoriaRepository.Categorias
                 .OrderBy(c => c.CategoriaNome);
-            Console.WriteLine("TESTE");
+
             return View(categorias);
         }
     }

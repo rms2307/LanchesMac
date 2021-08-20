@@ -7,8 +7,17 @@
     <div class="figure-caption">
         <h3 class="float-right">@Model.Preco.ToString("c")</h3>
         <h3>
-            @Model.Nome
+            <a asp-controller="Lanche" asp-action="Details" asp-route-lancheId="@Model.LancheId">
+                @Model.Nome
+            </a>
         </h3>
         <p>@Model.DescricaoCurta</p>
+    </div>
+    <div class="addToCard text-right">
+        <p class="button">
+            <a class="btn btn-primary" id="cardButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemCarrinhoCompra" asp-route-lancheId="@Model.LancheId">
+                Incluir no Carrinho
+            </a>
+        </p>
     </div>
 </div>
