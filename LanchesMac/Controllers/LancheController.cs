@@ -3,6 +3,7 @@ using LanchesMac.Repositories;
 using LanchesMac.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LanchesMac.Controllers
 {
@@ -59,6 +60,24 @@ namespace LanchesMac.Controllers
             if (lanche == null) return View("~/Views/Error/Error.cshtml");
 
             return View(lanche);
+        }
+
+        public IActionResult Search(string searchString)
+        {
+            IEnumerable<Lanche> lanches;
+            string categoriaAtual = string.Empty;
+
+            if (string.IsNullOrEmpty(searchString))
+            {
+                lanches = _lancheRepository.ListarLanches();
+            }
+            else
+            {
+                lanches = _lancheRepository.ListarLanches()
+                    .Where(l => l.Nome.ToLower().Contains(searchString));
+            }
+
+            return View("~/Views/Lanche/List.cshtml", new LancheListViewModel { Lanches = lanches, CategoriaAtual = categoriaAtual });
         }
     }
 }
