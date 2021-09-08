@@ -32,7 +32,7 @@ namespace LanchesMac.Repositories
                     PedidoId = pedido.PedidoId,
                     Preco = item.Lanche.Preco
                 };
-                _appDbContext.pedidoDetalhes.Add(pedidosDetalhe);
+                _appDbContext.PedidoDetalhes.Add(pedidosDetalhe);
             }
             _appDbContext.SaveChanges();
         }

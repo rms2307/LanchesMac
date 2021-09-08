@@ -77,7 +77,7 @@ namespace LanchesMac.Controllers
                     .Where(l => l.Nome.ToLower().Contains(searchString));
             }
 
-            return View("~/Views/Lanche/List.cshtml", new LancheListViewModel { Lanches = lanches, CategoriaAtual = categoriaAtual });
+            return View("~/Views/Lanche/List.cshtml", new LancheListViewModel { Lanches = lanches, CategoriaAtual = "Todos os Lanches" });
         }
     }
 }
