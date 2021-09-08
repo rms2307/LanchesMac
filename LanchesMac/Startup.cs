@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace LanchesMac
 {
@@ -26,6 +27,10 @@ namespace LanchesMac
         {
             var connectionString = Configuration.GetConnectionString("AppContext");
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 25));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDBContext>()
+                .AddDefaultTokenProviders();
 
             services.AddDbContext<AppDBContext>(dbContextOptions =>
                 dbContextOptions.UseMySql(connectionString, serverVersion, builder =>
